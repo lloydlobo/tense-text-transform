@@ -1,8 +1,8 @@
 // cspell:disable
 
-// import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-auto';
 
-import adapter from '@sveltejs/adapter-node';
+// import adapter from '@sveltejs/adapter-node';
 
 import preprocess from 'svelte-preprocess';
 
@@ -13,12 +13,13 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter({
-			// default options = adapter-node
-			out: 'build',
-			precompress: false,
-			envPrefix: ''
-		}),
+		adapter: adapter(),
+		// adapter: adapter({
+		// default options = adapter-node
+		// out: 'build',
+		// precompress: false,
+		// envPrefix: ''
+		// }),
 
 		// Override http methods in the Todo forms
 		methodOverride: {
