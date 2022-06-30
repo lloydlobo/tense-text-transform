@@ -3,7 +3,8 @@
 </script>
 
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+	// import Counter from '$lib/Counter.svelte';
+	
 </script>
 
 <svelte:head>
@@ -24,10 +25,10 @@
 	</h1>
 
 	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
+		<strong>simplicity:</strong> to avoid being fancy
 	</h2>
 
-	<Counter />
+	<!-- <Counter /> -->
 </section>
 
 <style>
