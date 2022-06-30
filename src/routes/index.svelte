@@ -13,20 +13,12 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</span>
 
-		to your new<br />SvelteKit app
+	<h1 class="title p-4">
+		<strong>simplicity:</strong> to avoid being fancy
 	</h1>
 
-	<h2>
-		<strong>simplicity:</strong> to avoid being fancy
-	</h2>
+	<a href='/tense' class="tense-link font-bold animate-pulse">change tense</a>
 
 	<!-- <Counter /> -->
 </section>
@@ -44,19 +36,19 @@
 		width: 100%;
 	}
 
-	.welcome {
+	/* .welcome {
 		display: block;
 		position: relative;
 		width: 100%;
 		height: 0;
 		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
+	} */
 
-	.welcome img {
+	/* .welcome img {
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		top: 0;
 		display: block;
-	}
+	} */
 </style>
