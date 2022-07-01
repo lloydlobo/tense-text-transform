@@ -18,7 +18,7 @@
 	import nlp from 'compromise';
 	let input = '';
 	let output = '';
-	let tense;
+	let field: HTMLInputElement;
 
 	const buttons = [
 		{ text: 'past', type: 'past', id: 'btnPast'},
@@ -26,23 +26,18 @@
 		{ text: 'future', type: 'future',id: 'btnFuture'}
 	]
 
-const handleTenseButton = async (tense: string) => {
-	if (tense == 'past') {
-		tense = 'past'
-	} 
-	if (tense == 'present') {
-		tense = 'present'
-	} 
-	if (tense == 'future') {
-		tense = 'future'
+	function handleTenseButton(stringType: string) {
+		field.focus();
+		console.log(stringType);
+		
 	}
-	return tense
-}
-console.log(tense);
 
 const handleFormInput = async () => {
 		let doc = nlp(input);
+
 		doc.verbs().toFutureTense();
+		doc.verbs().toPresentTense();
+		doc.verbs().toPastTense();
 		output = doc.text();
 	};
 </script>
@@ -65,12 +60,12 @@ const handleFormInput = async () => {
 
 		<div class="tense-buttons-options flex gap-1 text-center items-center justify-center">
 			{#each buttons as {id, text, type}}
-				<button bind:this={tense} on:click|preventDefault={() => handleTenseButton(type)} class="bg-slate-50 p-1 px-3 w-20 rounded-full my-4 focus-within:bg-red-400" {id}>{text}</button>
+				<button  on:click|preventDefault={() => handleTenseButton(type)} class="bg-slate-50 p-1 px-3 w-20 rounded-full my-4 focus-within:bg-red-400" {id}>{text}</button>
 			{/each}
 		</div>
 
 
-		<input bind:value={input} on:input={handleFormInput} type="text" name="sentence" autocomplete="off"  />
+		<input bind:value={input} bind:this={field} on:input={handleFormInput} type="text" name="sentence" autocomplete="off"  />
 		<!-- <p>{formInput}</p> -->
 		<output id="output">{output}</output>
 
