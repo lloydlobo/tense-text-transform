@@ -70,7 +70,7 @@ const handleFormInput = async () => {
 		</div>
 
 
-		<input bind:value={input} on:input={handleFormInput} type="text" name="sentence" />
+		<input bind:value={input} on:input={handleFormInput} type="text" name="sentence" autocomplete="off"  />
 		<!-- <p>{formInput}</p> -->
 		<output id="output">{output}</output>
 
