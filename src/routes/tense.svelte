@@ -19,21 +19,29 @@
 	let input = '';
 	let output = '';
 	let field: HTMLInputElement;
+	$: choice = 'present';
 
 	const buttons = [
 		{ text: 'past', type: 'past', id: 'btnPast'},
 		{ text: 'present', type: 'present', id: 'btnPresent'},
 		{ text: 'future', type: 'future',id: 'btnFuture'}
 	]
-
-	function handleTenseButton(stringType: string) {
+	async function handleTenseButton(stringType: string) {
 		field.focus();
-		console.log(stringType);
-		
+		let sliceChoice = stringType;
+		choice = sliceChoice;
+		console.log({choice});
+
+		return choice;
 	}
 
-const handleFormInput = async () => {
+	
+	
+	const handleFormInput = async () => {
 		let doc = nlp(input);
+		const userChoice = choice;
+		console.log(userChoice);
+		
 
 		doc.verbs().toFutureTense();
 		doc.verbs().toPresentTense();
@@ -50,6 +58,15 @@ const handleFormInput = async () => {
 <article class="content">
 	<div class="compromise">
 		<h1>Tensifier</h1>
+		<super>Tensifier (<a href="http://ipa-reader.xyz/?text=t%C4%95nsi%CB%88fa%C9%AA.%C9%99&voice=Joanna">tĕnsiˈfaɪ.ə</a>   pronounced ten-see-fire)</super> is a text tense converter with minamal effort and no compromises.
+		
+		
+		<div class="tense-buttons-options flex gap-1 text-center items-center justify-center">
+			{#each buttons as {id, text, type}}
+			<button  on:click|preventDefault={() => handleTenseButton(type)} class="bg-slate-50 p-1 px-3 w-20 rounded-full my-4 focus-within:bg-red-400" {id}>{text}</button>
+			{/each}
+		</div>
+		
 		<p>
 			<i
 				>Convert a sentence to any tense using <abbr title="Natural Language Processing">NLP</abbr
@@ -57,15 +74,7 @@ const handleFormInput = async () => {
 			>
 		</p>
 
-
-		<div class="tense-buttons-options flex gap-1 text-center items-center justify-center">
-			{#each buttons as {id, text, type}}
-				<button  on:click|preventDefault={() => handleTenseButton(type)} class="bg-slate-50 p-1 px-3 w-20 rounded-full my-4 focus-within:bg-red-400" {id}>{text}</button>
-			{/each}
-		</div>
-
-
-		<input bind:value={input} bind:this={field} on:input={handleFormInput} type="text" name="sentence" autocomplete="off"  />
+		<input bind:value={input} bind:this={field} on:input={handleFormInput} type="text" name="sentence" autocomplete="off" placeholder="I am nobody. Who are you?"  />
 		<!-- <p>{formInput}</p> -->
 		<output id="output">{output}</output>
 

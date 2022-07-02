@@ -15,7 +15,7 @@
 <section>
 
 	<h1 class="title p-4">
-		<strong>simplicity:</strong> to avoid being fancy
+		<strong><a href="http://ipa-reader.xyz/?text=sɪmˈplɪsɪti">simplicity</a>:</strong> to avoid being fancy
 	</h1>
 
 	<a href='/tense' class="tense-link font-bold animate-pulse">change tense</a>
